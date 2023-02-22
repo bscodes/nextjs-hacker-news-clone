@@ -24,8 +24,10 @@ const Story = ({
             {title}
           </a>
         ) : (
-          <Link href={`/item/${id}`}>
-            {title}
+          <Link href={`/item/${id}`} legacyBehavior>
+            <a>
+              {title}
+            </a>
           </Link>
         )}
         {url && (
@@ -56,7 +58,7 @@ const Story = ({
       <style jsx>
         {`
           .title {
-            font-size: 12px;
+            font-size: 15px;
             margin-bottom: 3px;
           }
 

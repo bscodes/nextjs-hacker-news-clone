@@ -12,7 +12,7 @@ const Stories = ({
       {stories && stories.map((story, i) => {
         return (
           <div key={story.id} className="item">
-            {offset !== offset ? (
+            {offset !== null ? (
               <>
                 <span className='count'>{
                   offset + i + 1
@@ -44,27 +44,31 @@ const Stories = ({
             margin: 10px 0;
           }
 
-          /* .count {
-            flex-grow: 1;
+          .count {
             flex-basis: auto;
             vertical-align: top;
-            padding-right: 6px;
+            font-size: 14px;
+            margin-right: 5px;
             display: block;
-            font-size: 20px;
-          } */
+            width: 20px;
+          }
+
+          .count::after {
+            content: '.';
+          }
+
           .story {
             flex: 100;
             display: inline-block;
           }
 
           .footer {
-            display: block;
             padding: 10px 0 40px 30px;
           }
 
           .footer a {
             color: #000;
-            font-size: 20px;
+            font-size: 14px;
             display: inline-block;
             text-decoration: none;
           }

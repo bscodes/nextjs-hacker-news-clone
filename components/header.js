@@ -18,28 +18,28 @@ const Header = () => {
                 <a>
                   new
                 </a>
-              </Link>
+              </Link> |
             </li>
             <li>
               <Link href="/show" legacyBehavior>
                 <a>
                   show
                 </a>
-              </Link>
+              </Link> |
             </li>
             <li>
               <Link href="/ask" legacyBehavior>
                 <a>
                   ask
                 </a>
-              </Link>
+              </Link> |
             </li>
             <li>
               <Link href="/jobs" legacyBehavior>
                 <a>
                   jobs
                 </a>
-              </Link>
+              </Link> |
             </li>
             <li>
               <Link href="/submit" legacyBehavior>
@@ -61,14 +61,9 @@ const Header = () => {
         {`
 
           header {
-            display: flex;
-            font-size: 13px;
             background: #FF6601;
-          }
-
-          .logo {
-            display: inline-block;
-            margin: 4px;
+            display: flex;
+            font-size: 14px;
           }
 
           .left {
@@ -77,8 +72,31 @@ const Header = () => {
 
           .right {
             flex: 1;
+            text-align: right;
           }
 
+          .title, .logo {
+            font-weight: bold;
+            display: inline-block;
+            font-size: 14px;
+            text-decoration: none;
+            padding-right: 4px;
+            color: #000;
+            vertical-align: center;
+          }
+
+          .login {
+            display: inline-block;
+            font-size: 11px;
+            text-decoration: none;
+            color: #000;
+          }
+
+          .nav {
+            display: inline-block;
+            vertical-align: center;
+            padding: 2px 0;
+          }
 
           ul {
             list-style: none;
@@ -90,7 +108,7 @@ const Header = () => {
 
           a {
             display: inline-block;
-            padding: 10px;
+            padding: 0 10px;
             font-size: 11px;
             text-decoration: none;
             color: #000;
