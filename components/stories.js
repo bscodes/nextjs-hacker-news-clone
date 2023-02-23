@@ -5,7 +5,8 @@ import Story from './updated-story'
 const Stories = ({
   page = 1,
   stories,
-  offset = null
+  offset = null,
+  morePath = 'news'
 }) => {
   return (
     <div>
@@ -32,7 +33,7 @@ const Stories = ({
         )
       })}
       <footer className='footer'>
-        <Link href={`/news/${page + 1}`} legacyBehavior>
+        <Link href={`/${morePath}/${page + 1}`} legacyBehavior>
           <a>More</a>
         </Link>
       </footer>

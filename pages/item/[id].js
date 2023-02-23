@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Page from '../../components/page';
 import getItem from '../../lib/get-item';
 import getComments from '../../lib/get-comments';
+import timeAgo from '../../lib/time-ago';
+import Comment from '../../components/comment';
+import Commentform from '../../components/comment-form';
 
 export function getStaticPaths() {
   return {
@@ -29,7 +32,21 @@ export async function getStaticProps({ params: { id = 1 } }) {
 
 const News = ({ story }) => {
   const [comments, setComments] = useState([])
+  const [toggled, setToggled] = useState(false);
+  const pluralCommentCount = (count, s) => s + (count === 0 || count > 1 ? 's' : '')
+  const ref = useRef(false);
 
+  const handleToggle = (e) => {
+    console.log(ref);
+    //setToggled(!toggled)
+  }
+
+  /* useEffect(() => {
+    handleToggle();
+
+
+  }, [ref]) */
+  console.log({ comments });
 
   useEffect(() => {
     if (story) {
@@ -42,6 +59,7 @@ const News = ({ story }) => {
         })
     }
   }, [story])
+
 
   return (
     <Page>
@@ -76,19 +94,19 @@ const News = ({ story }) => {
 
             <div className="comments">
               <ul>
-                {comments && comments.map(comment => (
+                {comments && comments.map((comment) => (
                   <li className="comment" key={comment.id}>
                     <div className="text">
                       {comment.text}
                     </div>
+
+                    <div className="form">
+                      <Commentform />
+                    </div>
                     <div className="children">
-                      <ul>
-                        {comment && comment?.comments.map(item => (
-                          <li className="text" key={item.id}>
-                            {item.text}
-                          </li>
-                        ))}
-                      </ul>
+                      {comment && comment?.comments.map(item => (
+                        <Comment key={comment.id} {...comment} />
+                      ))}
                     </div>
                   </li>
                 ))}
@@ -131,6 +149,18 @@ const News = ({ story }) => {
         .score, .date, .comment-count {
           font-size: 12px;
           margin-right: 5px;
+        }
+
+        .comments {
+          padding: 10px 0 20px;
+        }
+
+        .children {
+          padding-top: 15px;
+        }
+
+        ul {
+          list-style: none;
         }
         `}
       </style>
