@@ -28,25 +28,11 @@ const Header = () => {
               </Link> |
             </li>
             <li>
-              <Link href="/ask" legacyBehavior>
-                <a>
-                  ask
-                </a>
-              </Link> |
-            </li>
-            <li>
               <Link href="/jobs" legacyBehavior>
                 <a>
                   jobs
                 </a>
               </Link> |
-            </li>
-            <li>
-              <Link href="/submit" legacyBehavior>
-                <a>
-                  submit
-                </a>
-              </Link>
             </li>
           </ul>
         </div>

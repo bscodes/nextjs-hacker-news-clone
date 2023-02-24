@@ -33,8 +33,6 @@ export async function getStaticProps({ params: { id = 1 } }) {
 
 const News = ({ story }) => {
   const [comments, setComments] = useState([])
-  const [toggled, setToggled] = useState(false);
-  const pluralCommentCount = (count, s) => s + (count === 0 || count > 1 ? 's' : '')
 
   useEffect(() => {
     if (story) {
