@@ -1,82 +1,87 @@
-import React, { Component } from 'react'
-import timeAgo from '../lib/time-ago';
+import React from 'react'
+import timeAgo from '../lib/time-ago'
 
-export default class Comment extends Component {
+export default class Comment extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      toggled: false
-    };
-    this.toggle = this.toggle.bind(this);
+    super(props)
+    this.state = { toggled: false }
+    this.toggle = this.toggle.bind(this)
   }
 
   toggle() {
-    this.setState({
-      toggled: !this.state.toggled
-    })
+    this.setState({ toggled: !this.state.toggled })
   }
 
   render() {
-    const { user, text, date, comments } = this.props;
+    const { user, text, date, comments } = this.props
     return (
       <div className="comment">
         <div className="meta">
-          {user} {timeAgo(new Date(date))} ago
+          {user} {timeAgo(new Date(date))} ago{' '}
           <span onClick={this.toggle} className="toggle">
-            {
-              this.state.toggled
-                ? `${(this.props.commentsCount || 0) + 1}`
-                : "[-]"
-            }
+            {this.state.toggled
+              ? `[+${(this.props.commentsCount || 0) + 1}]`
+              : '[-]'}
           </span>
         </div>
 
-        {this.state.toggled ? null : [
-          <div key="text" className="text" dangerouslySetInnerHTML={
-            {
-              __html: text
-            }
-          } />,
-          <div key="children" className="children">
-            {comments.map(comment => (
-              <Comment key={comment.id} {...comment} />
-            ))}
-          </div>,
-        ]}
-        <style jsx>
-          {`
-            .comment {
-              padding-top: 15px;
-            }
+        {this.state.toggled
+          ? null
+          : [
+            <div
+              key="text"
+              className="text"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />,
+            <div key="children" className="children">
+              {comments.map((comment) => (
+                <Comment key={comment.id} {...comment} />
+              ))}
+            </div>,
+          ]}
 
-            .meta {
-              font-size: 12px;
-              margin-bottom: 5px;
-            }
+        <style jsx>{`
+          .comment {
+            padding-top: 15px;
+          }
 
-            .children {
-              padding-top: 20px;
-            }
+          .children {
+            padding-left: 20px;
+          }
 
-            .toggle {
-              cursor: pointer;
-              font-size: 12px;
-            }
-            
-            .text:global(pre) {
-              margin-bottom: 10px;
-              max-width: 850px;
-              overflow: auto;
-              padding: 2px;
-              white-space: pre-wrap;
-            }
+          .meta {
+            font-size: 12px;
+            margin-bottom: 5px;
+          }
 
-            .text:global(a) {
-              color: #000;
-            }
+          .toggle {
+            cursor: pointer;
+          }
 
-          `}
-        </style>
+          .text {
+            color: #000;
+            font-size: 13px;
+            line-height: 18px;
+          }
+
+          /* hn styles */
+
+          .text :global(p) {
+            margin-top: 10px;
+          }
+
+          .text :global(pre) {
+            margin-bottom: 10px;
+            max-width: 900px;
+            overflow: auto;
+            padding: 2px;
+            white-space: pre-wrap;
+          }
+
+          .text :global(a) {
+            color: #000;
+          }
+        `}</style>
       </div>
     )
   }

@@ -6,7 +6,8 @@ const Stories = ({
   page = 1,
   stories,
   offset = null,
-  morePath = 'news'
+  morePath = 'news',
+  showMoreButton
 }) => {
   return (
     <div>
@@ -33,9 +34,10 @@ const Stories = ({
         )
       })}
       <footer className='footer'>
-        <Link href={`/${morePath}/${page + 1}`} legacyBehavior>
-          <a>More</a>
-        </Link>
+        {showMoreButton && (
+          <Link href={`/${morePath}/${page + 1}`} legacyBehavior>
+            <a>More</a>
+          </Link>)}
       </footer>
 
       <style jsx>

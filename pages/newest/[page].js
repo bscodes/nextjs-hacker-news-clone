@@ -33,7 +33,7 @@ export async function getStaticProps({ params: { page = 1 } }) {
 const Newest = ({ stories, page }) => {
   return (
     <Page>
-      <Stories stories={stories} morePath="newest" page={page} />
+      <Stories stories={stories} morePath="newest" page={page} showMoreButton />
     </Page>
   )
 }

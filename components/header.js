@@ -14,7 +14,7 @@ const Header = () => {
         <div className="nav">
           <ul>
             <li>
-              <Link href="/new" legacyBehavior>
+              <Link href="/newest/1" legacyBehavior>
                 <a>
                   new
                 </a>

@@ -17,7 +17,7 @@ export async function getStaticProps() {
 const Jobs = ({ stories }) => {
   return (
     <Page>
-      <Stories stories={stories} morePath='jobs' />
+      <Stories stories={stories} morePath='jobs' showMoreButton={false} />
     </Page>
   )
 }

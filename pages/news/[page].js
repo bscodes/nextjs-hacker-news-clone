@@ -41,7 +41,7 @@ const NewsList = ({ page, stories }) => {
 
   return (
     <Page>
-      <Stories stories={stories} page={page} offset={offset} />
+      <Stories stories={stories} page={page} offset={offset} showMoreButton />
     </Page>
   )
 }
